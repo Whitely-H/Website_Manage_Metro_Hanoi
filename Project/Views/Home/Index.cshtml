@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<section class="metro-hero">
+    <div class="metro-hero__text">
+        <h1>Di chuyển khắp Hà Nội<br />bằng đường sắt đô thị</h1>
+        <p>Tra cứu tuyến, giờ chạy tàu và giá vé chỉ trong vài giây.</p>
+    </div>
+
+    <div class="metro-quickfare metro-card">
+        <div class="metro-card__body">
+            <h5 class="mb-3">Tra cứu hành trình</h5>
+            <form asp-controller="Tickets" asp-action="Fare" method="get" class="row g-2">
+                <div class="col-12">
+                    <label class="form-label">Ga đi</label>
+                    <select class="form-select" name="fromStationId">
+                        <option>Cát Linh</option>
+                        <option>Nhổn</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Ga đến</label>
+                    <select class="form-select" name="toStationId">
+                        <option>Hà Đông</option>
+                        <option>Ga Hà Nội</option>
+                    </select>
+                </div>
+                <div class="col-12 mt-3">
+                    <button type="submit" class="metro-btn w-100">Xem giá vé &amp; giờ chạy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="metro-section">
+    <div class="d-flex justify-content-between align-items-end mb-3">
+        <h2 class="h4 mb-0">Tuyến đang khai thác</h2>
+        <a asp-controller="Routes" asp-action="Index" class="metro-btn metro-btn--outline">Xem tất cả</a>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="metro-card">
+                <div class="metro-card__body">
+                    <span class="metro-line-chip metro-line-chip--2a"></span>
+                    <div class="metro-card__title">Tuyến 2A: Cát Linh – Hà Đông</div>
+                    <div class="metro-card__meta">13 ga · 13.05 km · 05:00 – 22:30</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="metro-card">
+                <div class="metro-card__body">
+                    <span class="metro-line-chip metro-line-chip--3"></span>
+                    <div class="metro-card__title">Tuyến 3: Nhổn – Ga Hà Nội</div>
+                    <div class="metro-card__meta">12 ga · 12.5 km · 05:30 – 22:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="metro-section">
+    <h2 class="h4 mb-3">Tin tức &amp; thông báo vận hành</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="metro-card">
+                <div class="metro-card__body">
+                    <div class="metro-card__meta">20/09/2026</div>
+                    <div class="metro-card__title">Điều chỉnh giờ chạy tàu dịp lễ</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="metro-card">
+                <div class="metro-card__body">
+                    <div class="metro-card__meta">15/09/2026</div>
+                    <div class="metro-card__title">Mở bán vé tháng qua ứng dụng</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="metro-card">
+                <div class="metro-card__body">
+                    <div class="metro-card__meta">10/09/2026</div>
+                    <div class="metro-card__title">Thông báo bảo trì Tuyến 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

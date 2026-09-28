@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Metro Hà Nội</title>
+    <script type="importmap"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="metro-header">
+        <div class="metro-topbar">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="metro-topbar__status">
+                    <span class="metro-dot"></span>
+                    Tuyến 2A &amp; Tuyến 3 đang hoạt động bình thường
+                </div>
+                <div class="metro-topbar__links">
+                    <a href="tel:19001234">Hotline: 1900 1234</a>
+                    <span class="metro-topbar__sep">|</span>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Hỗ trợ</a>
+                    <span class="metro-topbar__sep">|</span>
+                    <a href="#">VI</a> / <a href="#">EN</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg metro-navbar">
+            <div class="container">
+                <a class="navbar-brand metro-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="metro-brand__mark">M</span>
+                    <span class="metro-brand__text">
+                        METRO <strong>HÀ NỘI</strong>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#metroNav"
+                        aria-controls="metroNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="metroNav">
+                    <ul class="navbar-nav metro-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Lines" asp-action="Index">Tuyến tàu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Stations" asp-action="Index">Nhà ga</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Tickets" asp-action="Fare">Giá vé</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Schedule" asp-action="Index">Lịch trình</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="News" asp-action="Index">Tin tức</a>
+                        </li>
+                    </ul>
+
+                    <form class="metro-search" role="search" asp-controller="Search" asp-action="Index" method="get">
+                        <input class="metro-search__input" type="search" name="q" placeholder="Tìm ga, tuyến, điểm đến..." />
+                        <button class="metro-search__btn" type="submit" aria-label="Tìm kiếm">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </button>
+                    </form>
+
+                    <a class="metro-account" asp-controller="Account" asp-action="Login">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <span>Đăng nhập</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="metro-linebar">
+            <div class="container">
+                <ul class="metro-linebar__list">
+                    <li><span class="metro-line-chip metro-line-chip--2a"></span>Tuyến 2A: Cát Linh – Hà Đông</li>
+                    <li><span class="metro-line-chip metro-line-chip--3"></span>Tuyến 3: Nhổn – Ga Hà Nội</li>
+                    <li><span class="metro-line-chip metro-line-chip--soon"></span>Tuyến 5: Văn Cao – Hòa Lạc <em>(sắp có)</em></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="metro-main pb-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="metro-footer">
+        <div class="container metro-footer__grid">
+            <div class="metro-footer__col">
+                <div class="metro-brand metro-brand--footer">
+                    <span class="metro-brand__mark">M</span>
+                    <span class="metro-brand__text">METRO <strong>HÀ NỘI</strong></span>
+                </div>
+                <p>Hệ thống quản lý vận hành đường sắt đô thị Hà Nội.</p>
+            </div>
+            <div class="metro-footer__col">
+                <h6>Liên kết nhanh</h6>
+                <ul>
+                    <li><a asp-controller="Routes" asp-action="Index">Tuyến tàu</a></li>
+                    <li><a asp-controller="Stations" asp-action="Index">Nhà ga</a></li>
+                    <li><a asp-controller="Tickets" asp-action="Fare">Giá vé</a></li>
+                    <li><a asp-controller="Home" asp-action="Privacy">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="metro-footer__col">
+                <h6>Hỗ trợ</h6>
+                <ul>
+                    <li>Hotline: 1900 1234</li>
+                    <li>Email: hotro@metrohanoi.vn</li>
+                    <li>Giờ hoạt động: 05:00 – 22:30</li>
+                </ul>
+            </div>
+        </div>
+        <div class="metro-footer__bottom">
+            <div class="container">
+                &copy; 2026 - Metro Hà Nội - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

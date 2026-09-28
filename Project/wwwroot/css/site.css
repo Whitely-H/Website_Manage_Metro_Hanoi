@@ -1,0 +1,394 @@
+/* ==========================================================================
+   Metro Hà N?i — theme tokens & skeleton styles
+   Thêm kh?i này vào wwwroot/css/site.css (ho?c import riêng thành metro.css
+   r?i include sau site.css m?c ??nh c?a ASP.NET Core).
+   ========================================================================== */
+
+:root {
+    /* Màu: xanh than ??m làm n?n ch? ??o (gi?ng s?c ph?i ??ng ph?c ngành
+     ???ng s?t), ?? cam làm ?i?m nh?n hành ??ng, xanh ng?c ph? cho tuy?n. */
+    --metro-navy: #0B2545;
+    --metro-navy-dark: #071A33;
+    --metro-red: #E4572E;
+    --metro-red-dark: #C6431E;
+    --metro-teal: #0F8B8D;
+    --metro-bg: #F5F6F8;
+    --metro-ink: #1B2430;
+    --metro-ink-soft: #5B6472;
+    --metro-white: #FFFFFF;
+    --metro-line: #E2E6EC;
+    --metro-radius: 10px;
+    --metro-font-display: "Be Vietnam Pro", "Inter", system-ui, sans-serif;
+    --metro-font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+    font-family: var(--metro-font-body);
+    color: var(--metro-ink);
+    background: var(--metro-bg);
+}
+
+h1, h2, h3, h4, h5, h6,
+.metro-brand__text {
+    font-family: var(--metro-font-display);
+    color: var(--metro-navy);
+}
+
+a {
+    color: var(--metro-navy);
+    text-decoration: none;
+}
+
+    a:hover {
+        color: var(--metro-red);
+    }
+
+/* ---------- Top bar ---------- */
+.metro-topbar {
+    background: var(--metro-navy-dark);
+    color: #C9D3E0;
+    font-size: 0.8125rem;
+    padding: 6px 0;
+}
+
+    .metro-topbar a {
+        color: #C9D3E0;
+    }
+
+        .metro-topbar a:hover {
+            color: var(--metro-white);
+        }
+
+.metro-topbar__sep {
+    margin: 0 8px;
+    opacity: 0.4;
+}
+
+.metro-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3FCF8E;
+    margin-right: 6px;
+}
+
+/* ---------- Main navbar ---------- */
+.metro-navbar {
+    background: var(--metro-white);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--metro-line);
+}
+
+.metro-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metro-brand__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--metro-red);
+    color: var(--metro-white);
+    font-family: var(--metro-font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.metro-brand__text {
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+}
+
+    .metro-brand__text strong {
+        font-weight: 800;
+        color: var(--metro-red);
+    }
+
+.metro-nav {
+    gap: 4px;
+}
+
+    .metro-nav .nav-link {
+        color: var(--metro-ink);
+        font-weight: 500;
+        padding: 8px 14px !important;
+        border-radius: 6px;
+    }
+
+        .metro-nav .nav-link:hover,
+        .metro-nav .nav-link.active {
+            background: rgba(228, 87, 46, 0.08);
+            color: var(--metro-red);
+        }
+
+.metro-search {
+    display: flex;
+    align-items: center;
+    background: var(--metro-bg);
+    border: 1px solid var(--metro-line);
+    border-radius: 999px;
+    padding: 4px 6px 4px 16px;
+    margin-right: 16px;
+    min-width: 260px;
+}
+
+.metro-search__input {
+    border: none;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.metro-search__btn {
+    border: none;
+    background: var(--metro-navy);
+    color: var(--metro-white);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .metro-search__btn:hover {
+        background: var(--metro-red);
+    }
+
+.metro-account {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--metro-navy);
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* ---------- Line bar (thay cho thanh danh m?c s?n ph?m) ---------- */
+.metro-linebar {
+    background: var(--metro-navy);
+}
+
+.metro-linebar__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    color: #DCE4F0;
+    font-size: 0.85rem;
+}
+
+    .metro-linebar__list li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .metro-linebar__list em {
+        color: #8FA0BF;
+        font-style: normal;
+        margin-left: 4px;
+    }
+
+.metro-line-chip {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.metro-line-chip--2a {
+    background: #E4572E;
+}
+
+.metro-line-chip--3 {
+    background: #0F8B8D;
+}
+
+.metro-line-chip--soon {
+    background: #5B6472;
+}
+
+/* ---------- Content area (khung ?? ?? n?i dung t?ng trang) ---------- */
+.metro-main {
+    min-height: 60vh;
+}
+
+.metro-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 340px;
+    margin: 24px 0 64px;
+    padding: 40px;
+    border-radius: var(--metro-radius);
+    background: linear-gradient(120deg, var(--metro-navy) 0%, var(--metro-navy-dark) 100%);
+    color: var(--metro-white);
+}
+
+.metro-hero__text {
+    max-width: 560px;
+}
+
+    .metro-hero__text h1 {
+        color: var(--metro-white);
+        font-size: 2.1rem;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+
+    .metro-hero__text p {
+        color: #C9D3E0;
+        font-size: 1.05rem;
+    }
+
+.metro-quickfare {
+    position: absolute;
+    right: 40px;
+    bottom: -48px;
+    width: 300px;
+    box-shadow: 0 12px 32px rgba(11, 37, 69, 0.18);
+}
+
+.metro-section {
+    margin-bottom: 48px;
+}
+
+@media (max-width: 767px) {
+    .metro-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px;
+    }
+
+    .metro-quickfare {
+        position: static;
+        width: 100%;
+        margin-top: 24px;
+        box-shadow: none;
+    }
+}
+
+/* Ví d? kh?i th? dùng chung — tuy?n/ga/tin t?c ??u có th? tái dùng class này */
+.metro-card {
+    background: var(--metro-white);
+    border: 1px solid var(--metro-line);
+    border-radius: var(--metro-radius);
+    overflow: hidden;
+}
+
+.metro-card__body {
+    padding: 16px;
+}
+
+.metro-card__title {
+    font-family: var(--metro-font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.metro-card__meta {
+    color: var(--metro-ink-soft);
+    font-size: 0.85rem;
+}
+
+.metro-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    background: var(--metro-red);
+    color: var(--metro-white);
+    border: none;
+}
+
+    .metro-btn:hover {
+        background: var(--metro-red-dark);
+        color: var(--metro-white);
+    }
+
+.metro-btn--outline {
+    background: transparent;
+    color: var(--metro-navy);
+    border: 1px solid var(--metro-line);
+}
+
+    .metro-btn--outline:hover {
+        border-color: var(--metro-navy);
+        color: var(--metro-navy);
+    }
+
+/* ---------- Footer ---------- */
+.metro-footer {
+    background: var(--metro-navy-dark);
+    color: #B9C4D6;
+    margin-top: 48px;
+}
+
+.metro-footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 32px;
+    padding: 40px 15px;
+}
+
+.metro-footer__col h6 {
+    color: var(--metro-white);
+    font-family: var(--metro-font-display);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.metro-footer__col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.metro-footer__col li {
+    margin-bottom: 8px;
+}
+
+.metro-footer__col a {
+    color: #B9C4D6;
+}
+
+    .metro-footer__col a:hover {
+        color: var(--metro-white);
+    }
+
+.metro-brand--footer .metro-brand__text {
+    color: var(--metro-white);
+}
+
+.metro-footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 0;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .metro-search {
+        margin: 12px 0;
+        min-width: 0;
+    }
+
+    .metro-footer__grid {
+        grid-template-columns: 1fr;
+    }
+}

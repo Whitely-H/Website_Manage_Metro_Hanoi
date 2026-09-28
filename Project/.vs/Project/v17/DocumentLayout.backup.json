@@ -1,0 +1,467 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\stations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\stations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\stations\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\stations\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\stations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\stations\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\stations\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\stations\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\stations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\stations\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\lines\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\lines\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\lines\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\lines\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\lines\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\lines\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\lines\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\lines\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\lines\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\lines\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\linescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\linescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\incidentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\incidentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\models\\line.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:models\\line.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\stationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\stationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\tickettypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\tickettypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\linestationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\linestationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\models\\hanoimetrodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:models\\hanoimetrodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\trainscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\trainscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\passengerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\passengerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|e:\\project\\website_manage_metro_hanoi\\project\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{4DC03419-03A2-42D9-B052-6CCF382E33BB}|Project.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stations\\Edit.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Stations\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T19:07:34.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stations\\Delete.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Stations\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T19:06:10.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stations\\Details.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Details.cshtml",
+              "RelativeToolTip": "Views\\Stations\\Details.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T19:05:44.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stations\\Create.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Create.cshtml",
+              "RelativeToolTip": "Views\\Stations\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T18:59:28.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LineStationController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\LineStationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LineStationController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\LineStationController.cs",
+              "RelativeToolTip": "Controllers\\LineStationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-27T17:39:10.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Stations\\Index.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Stations\\Index.cshtml",
+              "RelativeToolTip": "Views\\Stations\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T15:05:23.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lines\\Create.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Create.cshtml",
+              "RelativeToolTip": "Views\\Lines\\Create.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACIAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-27T14:38:53.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lines\\Edit.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Lines\\Edit.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAgwBwAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T16:41:20.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lines\\Details.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Details.cshtml",
+              "RelativeToolTip": "Views\\Lines\\Details.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T16:41:13.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lines\\Delete.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Lines\\Delete.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T16:41:08.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Line.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\Line.cs",
+              "RelativeDocumentMoniker": "Models\\Line.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\Line.cs",
+              "RelativeToolTip": "Models\\Line.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T16:39:58.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Lines\\Index.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Lines\\Index.cshtml",
+              "RelativeToolTip": "Views\\Lines\\Index.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T16:28:59.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TrainsController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\TrainsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TrainsController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\TrainsController.cs",
+              "RelativeToolTip": "Controllers\\TrainsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T16:04:46.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TicketTypesController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\TicketTypesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TicketTypesController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\TicketTypesController.cs",
+              "RelativeToolTip": "Controllers\\TicketTypesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T16:03:23.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "StationsController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\StationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StationsController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\StationsController.cs",
+              "RelativeToolTip": "Controllers\\StationsController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADwv0IAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:53:05.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SchedulesController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\SchedulesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SchedulesController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\SchedulesController.cs",
+              "RelativeToolTip": "Controllers\\SchedulesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:46:40.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PassengersController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\PassengersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PassengersController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\PassengersController.cs",
+              "RelativeToolTip": "Controllers\\PassengersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:45:34.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrdersController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:44:37.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LinesController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\LinesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LinesController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\LinesController.cs",
+              "RelativeToolTip": "Controllers\\LinesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:32:36.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IncidentsController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\IncidentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\IncidentsController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\IncidentsController.cs",
+              "RelativeToolTip": "Controllers\\IncidentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:30:48.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T10:30:08.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T10:14:21.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAABgAAAAAAAAAAIBJwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-09-26T10:13:53.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAHkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-26T10:12:42.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AccountsController.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\AccountsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountsController.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Controllers\\AccountsController.cs",
+              "RelativeToolTip": "Controllers\\AccountsController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T09:38:17.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T09:20:15.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "HanoiMetroDbContext.cs",
+              "DocumentMoniker": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\HanoiMetroDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\HanoiMetroDbContext.cs",
+              "ToolTip": "E:\\Project\\Website_Manage_Metro_Hanoi\\Project\\Models\\HanoiMetroDbContext.cs",
+              "RelativeToolTip": "Models\\HanoiMetroDbContext.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwCgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-26T09:18:04.106Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Project.Models.Line>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>TUYẾN TÀU</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã tuyến
+            </th>
+            <th>
+                Tên tuyến
+            </th>
+            <th>
+                Màu tuyến
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>Tình Trạng</th>
+            <th>Tàu Đang Hoạt động</th>
+            <th>Thao tác</th>           
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LineID)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LineName)
+                </td>
+
+                <td>
+                    <span style="
+                        display:inline-block;
+                        width:30px;
+                        height:20px;
+                        background-color:@item.ColorCode;
+                        border:1px solid #ccc;
+                        vertical-align:middle;">
+                    </span>                    
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.Incidents != null && item.Incidents.Any())
+                    {
+                        @foreach (var incident in item.Incidents)
+                        {
+                            <div>@incident.Severity</div>
+                        }
+                    }
+                    else
+                    {
+                        <span>Không có sự cố</span>
+                    }
+                </td>
+
+                <td>
+                    @if (item.Trains != null && item.Trains.Any(t => t.Status == "Hoạt động"))
+                    {
+                        @foreach (var train in item.Trains.Where(t => t.Status == "Hoạt động"))
+                        {
+                            <div>@train.TrainCode</div>
+                        }
+                    }
+                    else
+                    {
+                        <span>Không có tàu hoạt động</span>
+                    }
+                </td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@item.LineID"
+                       class="btn btn-info btn-sm">
+                        Chi tiết
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.LineID"
+                       class="btn btn-warning btn-sm">
+                        Sửa
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.LineID"
+                       class="btn btn-danger btn-sm">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

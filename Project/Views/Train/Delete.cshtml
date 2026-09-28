@@ -1,0 +1,66 @@
+@model Project.Models.Train
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Project.Models.Train</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainCode)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LineId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LineId)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Line)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Line)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Schedules)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Schedules)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TrainId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

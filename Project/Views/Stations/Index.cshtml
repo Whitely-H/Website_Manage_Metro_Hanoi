@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Project.Models.Station>
+
+@{
+    ViewData["Title"] = "";
+}
+
+<h1>STATION</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã ga</th>
+            <th>Tên ga</th>
+            <th>Địa chỉ</th>
+            <th>Thao tác</th>          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.StationId</td>
+            <td>@item.StationName</td>
+            <td>@item.Address</td>
+            <td>
+                <a asp-action="Details"
+                    asp-route-id="@item.StationId"
+                    class="btn btn-info btn-sm">
+                    Chi tiết
+                </a>
+
+                <a asp-action="Edit"
+                    asp-route-id="@item.StationId"
+                    class="btn btn-warning btn-sm">
+                    Sửa
+                </a>
+
+                <a asp-action="Delete"
+                    asp-route-id="@item.StationId"
+                    class="btn btn-danger btn-sm">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

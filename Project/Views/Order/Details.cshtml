@@ -1,0 +1,66 @@
+@model Project.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PassengerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PassengerId)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TicketTypeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TicketTypeId)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaymentMethod)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Passenger)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Passenger)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TicketType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TicketType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
