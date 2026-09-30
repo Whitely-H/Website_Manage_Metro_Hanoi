@@ -62,6 +62,7 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\LICENSE.txt
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\css\site.css
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\favicon.ico
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\js\site.js
@@ -123,4 +124,3 @@ E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\dist\jquery.min
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\dist\jquery.slim.js
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\dist\jquery.slim.min.js
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\dist\jquery.slim.min.map
-E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\jquery\LICENSE.txt

@@ -11,7 +11,6 @@ public class TicketTypesController : Controller
     {
         _context = context;
     }
-
     // INDEX
     [Authorize]
     public async Task<IActionResult> Index()
@@ -42,9 +41,60 @@ public class TicketTypesController : Controller
 
         return View(ticketType);
     }
+    // Buy
+    [AllowAnonymous]
+    public async Task<IActionResult> Buy(string? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
 
-    // CREATE
-    [Authorize(Roles = "Staff,Admin")]
+        var ticket = await _context.TicketTypes.FirstOrDefaultAsync(t => t.TicketTypeId == id);
+
+        if (ticket == null)
+        {
+            return NotFound();
+        }
+
+        return View(ticket);
+    }
+
+    [HttpPost]
+    [AllowAnonymous]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Buy(string id, string paymentMethod)
+    {
+        var ticket = await _context.TicketTypes.FirstOrDefaultAsync(t => t.TicketTypeId == id);
+
+        if (ticket == null)
+        {
+            return NotFound();
+        }
+
+        if (string.IsNullOrEmpty(paymentMethod))
+        {
+            ModelState.AddModelError("PaymentMethod", "Vui lòng chọn phương thức thanh toán.");
+            return View(ticket);
+        }
+
+        var order = new Order
+        {
+            OrderId = "O" + DateTime.Now.ToString("yyyyMMddHHmmss"),
+            PassengerId = null,
+            TicketTypeId = ticket.TicketTypeId,
+            PurchaseDate = DateTime.Now,
+            TotalAmount = ticket.Price,
+            PaymentMethod = paymentMethod
+        };
+
+        _context.Orders.Add(order);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+// CREATE
+[Authorize(Roles = "Staff,Admin")]
     public IActionResult Create()
     {
         return View();

@@ -1,0 +1,32 @@
+﻿@model Project.Models.TicketType
+
+@{
+    ViewData["Title"] = "Mua vé";
+}
+
+<h2>MUA VÉ</h2>
+
+<div class="card" style="max-width:500px;">
+    <div class="card-body">
+        <h4>@Model.TypeName</h4>
+        <p>Giá vé: <strong>@Model.Price.ToString("N0") VNĐ</strong></p>
+        <p>Thời hạn: @(Model.DurationHours == null ? "Không xác định" : Model.DurationHours >= 720 ? "30 ngày" : Model.DurationHours + " giờ")</p>
+
+        <form asp-action="Buy">
+            <input type="hidden" name="id" value="@Model.TicketTypeId" />
+
+            <div class="form-group mb-3">
+                <label class="control-label">Phương thức thanh toán</label>
+                <select name="paymentMethod" class="form-control">
+                    <option value="">-- Chọn phương thức --</option>
+                    <option value="Tiền mặt">Tiền mặt</option>
+                    <option value="VNPay">VNPay</option>
+                    <option value="Momo">Momo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Mua vé</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>
