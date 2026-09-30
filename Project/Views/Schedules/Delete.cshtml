@@ -1,0 +1,63 @@
+@model Project.Models.Schedule
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+
+    <form asp-action="Delete" asp-route-id="@Model.ScheduleId">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="ScheduleId" />
+
+        <div class="form-group">
+            <label asp-for="ScheduleId" class="control-label"></label>
+            <input asp-for="ScheduleId" class="form-control" readonly />
+            <span asp-validation-for="ScheduleId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TrainId" class="control-label"></label>
+            <input asp-for="TrainId" class="form-control" readonly />
+            <span asp-validation-for="TrainId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DepartureTime" class="control-label"></label>
+            <input asp-for="DepartureTime"
+                   class="form-control"
+                   readonly />
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ArrivalTime" class="control-label"></label>
+            <input asp-for="ArrivalTime"
+                   class="form-control"
+                   readonly />
+            <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Direction" class="control-label"></label>
+            <input asp-for="Direction" class="form-control" readonly />
+            <span asp-validation-for="Direction" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-secondary">
+                Back to List
+            </a>
+        </div>
+
+    </form>
+</div>

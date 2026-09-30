@@ -1,8 +1,11 @@
-
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
+namespace Project.Controllers;
+
+[Authorize]
 public class PassengersController : Controller
 {
     private readonly HanoiMetroDbContext _context;
@@ -12,22 +15,23 @@ public class PassengersController : Controller
         _context = context;
     }
 
-    // GET: PASSENGERS
-    public async Task<IActionResult> Index()    
+    // Index
+    public async Task<IActionResult> Index()
     {
         return View(await _context.Passengers.ToListAsync());
     }
 
-    // GET: PASSENGERS/Details/5
-    public async Task<IActionResult> Details(System.Guid? passengerid)
+    // Details
+    public async Task<IActionResult> Details(string? id)
     {
-        if (passengerid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var passenger = await _context.Passengers
-            .FirstOrDefaultAsync(m => m.PassengerId == passengerid);
+            .FirstOrDefaultAsync(p => p.PassengerId == id);
+
         if (passenger == null)
         {
             return NotFound();
@@ -36,52 +40,58 @@ public class PassengersController : Controller
         return View(passenger);
     }
 
-    // GET: PASSENGERS/Create
+    // Create
+    [Authorize(Roles = "Admin,Staff")]
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: PASSENGERS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
+    [Authorize(Roles = "Admin,Staff")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("PassengerId,FullName,PhoneNumber,Email,IdentityCard,PassengerType,Orders,SmartCards")] Passenger passenger)
+    public async Task<IActionResult> Create([Bind("PassengerId,FullName,PhoneNumber,Email,IdentityCard,PassengerType")] Passenger passenger)
     {
+        if (await _context.Passengers.AnyAsync(p => p.PassengerId == passenger.PassengerId))
+        {
+            ModelState.AddModelError("PassengerId", "Mã hành khách đã tồn tại.");
+        }
+
         if (ModelState.IsValid)
         {
-            _context.Add(passenger);
+            _context.Passengers.Add(passenger);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
         return View(passenger);
     }
 
-    // GET: PASSENGERS/Edit/5
-    public async Task<IActionResult> Edit(System.Guid? passengerid)
+    // Edit
+    [Authorize(Roles = "Admin,Staff")]
+    public async Task<IActionResult> Edit(string? id)
     {
-        if (passengerid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var passenger = await _context.Passengers.FindAsync(passengerid);
+        var passenger = await _context.Passengers.FindAsync(id);
+
         if (passenger == null)
         {
             return NotFound();
         }
+
         return View(passenger);
     }
 
-    // POST: PASSENGERS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
+    [Authorize(Roles = "Admin,Staff")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(System.Guid? passengerid, [Bind("PassengerId,FullName,PhoneNumber,Email,IdentityCard,PassengerType,Orders,SmartCards")] Passenger passenger)
+    public async Task<IActionResult> Edit(string id, [Bind("PassengerId,FullName,PhoneNumber,Email,IdentityCard,PassengerType")] Passenger passenger)
     {
-        if (passengerid != passenger.PassengerId)
+        if (id != passenger.PassengerId)
         {
             return NotFound();
         }
@@ -99,26 +109,27 @@ public class PassengersController : Controller
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         return View(passenger);
     }
 
-    // GET: PASSENGERS/Delete/5
-    public async Task<IActionResult> Delete(System.Guid? passengerid)
+    // Delete
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete(string? id)
     {
-        if (passengerid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var passenger = await _context.Passengers
-            .FirstOrDefaultAsync(m => m.PassengerId == passengerid);
+        var passenger = await _context.Passengers.FirstOrDefaultAsync(p => p.PassengerId == id);
+
         if (passenger == null)
         {
             return NotFound();
@@ -127,23 +138,27 @@ public class PassengersController : Controller
         return View(passenger);
     }
 
-    // POST: PASSENGERS/Delete/5
-    [HttpPost, ActionName("Delete")]
+    [HttpPost]
+    [ActionName("Delete")]
+    [Authorize(Roles = "Admin")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(System.Guid? passengerid)
+    public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        var passenger = await _context.Passengers.FindAsync(passengerid);
-        if (passenger != null)
+        var passenger = await _context.Passengers.FindAsync(id);
+
+        if (passenger == null)
         {
-            _context.Passengers.Remove(passenger);
+            return NotFound();
         }
 
+        _context.Passengers.Remove(passenger);
         await _context.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 
-    private bool PassengerExists(System.Guid? passengerid)
+    private bool PassengerExists(string id)
     {
-        return _context.Passengers.Any(e => e.PassengerId == passengerid);
+        return _context.Passengers.Any(p => p.PassengerId == id);
     }
 }

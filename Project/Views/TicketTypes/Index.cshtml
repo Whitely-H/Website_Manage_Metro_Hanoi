@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Project.Models.TicketType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>LOẠI VÉ</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create new</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Mua vé</a>
+    </p>
+
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                <th>
+                    Mã loại vé
+                </th>
+            }           
+            <th>
+                Tên loại vé
+            </th>
+            <th>
+                Giá vé
+            </th>
+            <th>
+                Thời hạn
+            </th>
+            <th>
+                Thao tác
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketTypeId)
+                    </td>
+
+                }
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+
+                <td>
+                    @item.Price.ToString("N0") VNĐ
+                </td>
+
+                <td>
+                    @if (item.DurationHours == null)
+                    {
+                        <span>Không giới hạn thời gian</span>
+                    }
+                    else if (item.DurationHours >= 720)
+                    {
+                        <span>30 ngày</span>
+                    }
+                    else
+                    {
+                        <span>@item.DurationHours giờ</span>
+                    }
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.TicketTypeId" class="btn btn-info btn-sm">Chi tiết</a>
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.TicketTypeId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.TicketTypeId" class="btn btn-danger btn-sm">Xóa</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

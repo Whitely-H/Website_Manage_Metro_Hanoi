@@ -1,7 +1,7 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 public class SchedulesController : Controller
 {
@@ -12,22 +12,19 @@ public class SchedulesController : Controller
         _context = context;
     }
 
-    // GET: SCHEDULES
-    public async Task<IActionResult> Index()    
+    // Details
+    [Authorize]
+    public async Task<IActionResult> Details(string? id)
     {
-        return View(await _context.Schedules.ToListAsync());
-    }
-
-    // GET: SCHEDULES/Details/5
-    public async Task<IActionResult> Details(string? scheduleid)
-    {
-        if (scheduleid == null)
+        if (string.IsNullOrEmpty(id))
         {
             return NotFound();
         }
 
         var schedule = await _context.Schedules
-            .FirstOrDefaultAsync(m => m.ScheduleId == scheduleid);
+            .Include(s => s.Train)
+            .FirstOrDefaultAsync(s => s.ScheduleId == id);
+
         if (schedule == null)
         {
             return NotFound();
@@ -36,52 +33,58 @@ public class SchedulesController : Controller
         return View(schedule);
     }
 
-    // GET: SCHEDULES/Create
+    // Create
+    [Authorize(Roles = "Staff,Admin")]
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: SCHEDULES/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ScheduleId,TrainId,DepartureTime,ArrivalTime,Direction,Train")] Schedule schedule)
+    public async Task<IActionResult> Create(
+        [Bind("ScheduleId,TrainId,DepartureTime,ArrivalTime,Direction")]
+        Schedule schedule)
     {
         if (ModelState.IsValid)
         {
-            _context.Add(schedule);
+            _context.Schedules.Add(schedule);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
         return View(schedule);
     }
 
-    // GET: SCHEDULES/Edit/5
-    public async Task<IActionResult> Edit(string? scheduleid)
+    // Edit
+    [Authorize(Roles = "Staff,Admin")]
+    public async Task<IActionResult> Edit(string? id)
     {
-        if (scheduleid == null)
+        if (string.IsNullOrEmpty(id))
         {
             return NotFound();
         }
 
-        var schedule = await _context.Schedules.FindAsync(scheduleid);
+        var schedule = await _context.Schedules
+            .FindAsync(id);
+
         if (schedule == null)
         {
             return NotFound();
         }
+
         return View(schedule);
     }
 
-    // POST: SCHEDULES/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string? scheduleid, [Bind("ScheduleId,TrainId,DepartureTime,ArrivalTime,Direction,Train")] Schedule schedule)
+    public async Task<IActionResult> Edit(
+        string id,
+        [Bind("ScheduleId,TrainId,DepartureTime,ArrivalTime,Direction")]
+        Schedule schedule)
     {
-        if (scheduleid != schedule.ScheduleId)
+        if (id != schedule.ScheduleId)
         {
             return NotFound();
         }
@@ -90,7 +93,7 @@ public class SchedulesController : Controller
         {
             try
             {
-                _context.Update(schedule);
+                _context.Schedules.Update(schedule);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -99,26 +102,28 @@ public class SchedulesController : Controller
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         return View(schedule);
     }
 
-    // GET: SCHEDULES/Delete/5
-    public async Task<IActionResult> Delete(string? scheduleid)
+    // Delete
+    [Authorize(Roles = "Staff,Admin")]
+    public async Task<IActionResult> Delete(string? id)
     {
-        if (scheduleid == null)
+        if (string.IsNullOrEmpty(id))
         {
             return NotFound();
         }
 
         var schedule = await _context.Schedules
-            .FirstOrDefaultAsync(m => m.ScheduleId == scheduleid);
+            .FirstOrDefaultAsync(s => s.ScheduleId == id);
+
         if (schedule == null)
         {
             return NotFound();
@@ -127,23 +132,40 @@ public class SchedulesController : Controller
         return View(schedule);
     }
 
-    // POST: SCHEDULES/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string? scheduleid)
+    public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        var schedule = await _context.Schedules.FindAsync(scheduleid);
-        if (schedule != null)
+        var schedule = await _context.Schedules
+            .FindAsync(id);
+
+        if (schedule == null)
         {
-            _context.Schedules.Remove(schedule);
+            return NotFound();
         }
 
+        _context.Schedules.Remove(schedule);
+
         await _context.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 
-    private bool ScheduleExists(string? scheduleid)
+    // Index
+    [Authorize]
+    public async Task<IActionResult> Index()
     {
-        return _context.Schedules.Any(e => e.ScheduleId == scheduleid);
+        var schedules = await _context.Schedules
+            .Include(s => s.Train)
+            .OrderBy(s => s.DepartureTime)
+            .ToListAsync();
+
+        return View(schedules);
+    }
+
+    private bool ScheduleExists(string id)
+    {
+        return _context.Schedules
+            .Any(s => s.ScheduleId == id);
     }
 }

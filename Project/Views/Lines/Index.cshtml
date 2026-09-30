@@ -6,10 +6,19 @@
 
 <h2>TUYẾN TÀU</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
-</p>
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create new</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Mua vé</a>
+    </p>
 
+}
 <table class="table">
     <thead>
         <tr>
@@ -86,23 +95,13 @@
                 </td>
 
                 <td>
-                    <a asp-action="Details"
-                       asp-route-id="@item.LineID"
-                       class="btn btn-info btn-sm">
-                        Chi tiết
-                    </a>
+                    <a asp-action="Details" asp-route-id="@item.LineID" class="btn btn-info btn-sm">Chi tiết</a>
 
-                    <a asp-action="Edit"
-                       asp-route-id="@item.LineID"
-                       class="btn btn-warning btn-sm">
-                        Sửa
-                    </a>
-
-                    <a asp-action="Delete"
-                       asp-route-id="@item.LineID"
-                       class="btn btn-danger btn-sm">
-                        Xóa
-                    </a>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.LineID" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.LineID" class="btn btn-danger btn-sm">Xóa</a>
+                    }
                 </td>
             </tr>
         }

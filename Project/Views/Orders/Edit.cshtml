@@ -1,0 +1,68 @@
+﻿@model Project.Models.Order
+
+@{
+    ViewData["Title"] = "Sửa đơn hàng";
+}
+
+<h2>SỬA ĐƠN HÀNG</h2>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="OrderId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="PassengerId" class="control-label">Hành khách</label>
+        <select asp-for="PassengerId" class="form-control">
+            <option value="">-- Không chọn hành khách --</option>
+            @foreach (var passenger in ViewBag.Passengers)
+            {
+                <option value="@passenger.PassengerId">@passenger.FullName</option>
+            }
+        </select>
+        <span asp-validation-for="PassengerId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="TicketTypeId" class="control-label">Loại vé</label>
+        <select asp-for="TicketTypeId" class="form-control">
+            <option value="">-- Chọn loại vé --</option>
+            @foreach (var ticket in ViewBag.TicketTypes)
+            {
+                <option value="@ticket.TicketTypeId">@ticket.TypeName - @ticket.Price.ToString("N0") VNĐ</option>
+            }
+        </select>
+        <span asp-validation-for="TicketTypeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="PurchaseDate" class="control-label">Ngày mua</label>
+        <input asp-for="PurchaseDate" type="datetime-local" class="form-control" />
+        <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="TotalAmount" class="control-label">Tổng tiền</label>
+        <input asp-for="TotalAmount" class="form-control" />
+        <span asp-validation-for="TotalAmount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="PaymentMethod" class="control-label">Phương thức thanh toán</label>
+        <select asp-for="PaymentMethod" class="form-control">
+            <option value="">-- Chọn phương thức --</option>
+            <option value="Tiền mặt">Tiền mặt</option>
+            <option value="VNPay">VNPay</option>
+            <option value="Momo">Momo</option>
+        </select>
+        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

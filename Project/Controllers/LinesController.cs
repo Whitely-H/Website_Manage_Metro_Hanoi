@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
@@ -11,7 +12,7 @@ public class LinesController : Controller
         _context = context;
     }
 
-    // GET: Lines
+    [Authorize]
     public async Task<IActionResult> Index()
     {
         var lines = await _context.Lines
@@ -21,7 +22,7 @@ public class LinesController : Controller
 
         return View(lines);
     }
-
+    [Authorize]
     public async Task<IActionResult> Details(string? id)
     {
         if (string.IsNullOrEmpty(id))
@@ -44,7 +45,7 @@ public class LinesController : Controller
         return View(line);
     }
 
-    // GET: Lines/Create
+    [Authorize(Roles = "Staff,Admin")]
     public IActionResult Create()
     {
         return View();
@@ -67,7 +68,7 @@ public class LinesController : Controller
         return View(line);
     }
 
-    // GET: Lines/Edit/L-2A
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> Edit(string? id)
     {
         if (id == null)
@@ -120,7 +121,7 @@ public class LinesController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // GET: Lines/Delete/L-2A
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(string? id)
     {
         if (id == null)

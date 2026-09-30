@@ -1,8 +1,11 @@
-
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
+namespace Project.Controllers;
+
+[Authorize]
 public class OrdersController : Controller
 {
     private readonly HanoiMetroDbContext _context;
@@ -12,22 +15,28 @@ public class OrdersController : Controller
         _context = context;
     }
 
-    // GET: ORDERS
-    public async Task<IActionResult> Index()    
+    // Index
+    public async Task<IActionResult> Index()
     {
-        return View(await _context.Orders.ToListAsync());
+        return View(await _context.Orders
+            .Include(o => o.Passenger)
+            .Include(o => o.TicketType)
+            .ToListAsync());
     }
 
-    // GET: ORDERS/Details/5
-    public async Task<IActionResult> Details(string? orderid)
+    // Details
+    public async Task<IActionResult> Details(string? id)
     {
-        if (orderid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var order = await _context.Orders
-            .FirstOrDefaultAsync(m => m.OrderId == orderid);
+            .Include(o => o.Passenger)
+            .Include(o => o.TicketType)
+            .FirstOrDefaultAsync(o => o.OrderId == id);
+
         if (order == null)
         {
             return NotFound();
@@ -36,52 +45,64 @@ public class OrdersController : Controller
         return View(order);
     }
 
-    // GET: ORDERS/Create
-    public IActionResult Create()
+    // Create
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Create()
     {
+        ViewBag.Passengers = await _context.Passengers.ToListAsync();
+        ViewBag.TicketTypes = await _context.TicketTypes.ToListAsync();
         return View();
     }
 
-    // POST: ORDERS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("OrderId,PassengerId,TicketTypeId,PurchaseDate,TotalAmount,PaymentMethod,Passenger,TicketType")] Order order)
+    public async Task<IActionResult> Create([Bind("OrderId,PassengerId,TicketTypeId,PurchaseDate,TotalAmount,PaymentMethod")] Order order)
     {
+        if (await _context.Orders.AnyAsync(o => o.OrderId == order.OrderId))
+        {
+            ModelState.AddModelError("OrderId", "Mã đơn hàng đã tồn tại.");
+        }
+
         if (ModelState.IsValid)
         {
-            _context.Add(order);
+            _context.Orders.Add(order);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        ViewBag.Passengers = await _context.Passengers.ToListAsync();
+        ViewBag.TicketTypes = await _context.TicketTypes.ToListAsync();
         return View(order);
     }
 
-    // GET: ORDERS/Edit/5
-    public async Task<IActionResult> Edit(string? orderid)
+    // Edit
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Edit(string? id)
     {
-        if (orderid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var order = await _context.Orders.FindAsync(orderid);
+        var order = await _context.Orders.FindAsync(id);
+
         if (order == null)
         {
             return NotFound();
         }
+
+        ViewBag.Passengers = await _context.Passengers.ToListAsync();
+        ViewBag.TicketTypes = await _context.TicketTypes.ToListAsync();
         return View(order);
     }
 
-    // POST: ORDERS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string? orderid, [Bind("OrderId,PassengerId,TicketTypeId,PurchaseDate,TotalAmount,PaymentMethod,Passenger,TicketType")] Order order)
+    public async Task<IActionResult> Edit(string id, [Bind("OrderId,PassengerId,TicketTypeId,PurchaseDate,TotalAmount,PaymentMethod")] Order order)
     {
-        if (orderid != order.OrderId)
+        if (id != order.OrderId)
         {
             return NotFound();
         }
@@ -99,26 +120,32 @@ public class OrdersController : Controller
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
+
             return RedirectToAction(nameof(Index));
         }
+
+        ViewBag.Passengers = await _context.Passengers.ToListAsync();
+        ViewBag.TicketTypes = await _context.TicketTypes.ToListAsync();
         return View(order);
     }
 
-    // GET: ORDERS/Delete/5
-    public async Task<IActionResult> Delete(string? orderid)
+    // Delete
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete(string? id)
     {
-        if (orderid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var order = await _context.Orders
-            .FirstOrDefaultAsync(m => m.OrderId == orderid);
+            .Include(o => o.Passenger)
+            .Include(o => o.TicketType)
+            .FirstOrDefaultAsync(o => o.OrderId == id);
+
         if (order == null)
         {
             return NotFound();
@@ -127,23 +154,27 @@ public class OrdersController : Controller
         return View(order);
     }
 
-    // POST: ORDERS/Delete/5
-    [HttpPost, ActionName("Delete")]
+    [HttpPost]
+    [ActionName("Delete")]
+    [Authorize(Roles = "Admin")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string? orderid)
+    public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        var order = await _context.Orders.FindAsync(orderid);
-        if (order != null)
+        var order = await _context.Orders.FindAsync(id);
+
+        if (order == null)
         {
-            _context.Orders.Remove(order);
+            return NotFound();
         }
 
+        _context.Orders.Remove(order);
         await _context.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 
-    private bool OrderExists(string? orderid)
+    private bool OrderExists(string id)
     {
-        return _context.Orders.Any(e => e.OrderId == orderid);
+        return _context.Orders.Any(o => o.OrderId == id);
     }
 }

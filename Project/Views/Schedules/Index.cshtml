@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Project.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>LỊCH TRÌNH TÀU</h2>
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create new</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Mua vé</a>
+    </p>
+
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+            {
+                <th>
+                    Mã lịch trình
+                </th>
+            }            
+            <th>
+                Mã tàu
+            </th>
+            <th>
+                Giờ xuất phát
+            </th>
+            <th>
+                Giờ đến
+            </th>
+            <th>
+                Hướng di chuyển 
+            </th>
+            <th>
+                Thao tác
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduleId)
+                    </td>
+                }
+                
+                <td>
+                    @item.Train.TrainCode
+                </td>
+
+                <td>
+                    @item.DepartureTime.ToString("dd/MM/yyyy HH:mm")
+                </td>
+
+                <td>
+                    @item.ArrivalTime.ToString("dd/MM/yyyy HH:mm")
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direction)
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ScheduleId" class="btn btn-info btn-sm">Chi tiết</a>
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ScheduleId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.ScheduleId" class="btn btn-danger btn-sm">Xóa</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

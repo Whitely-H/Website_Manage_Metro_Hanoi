@@ -1,33 +1,42 @@
-
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
 
+namespace Project.Controllers;
+
+[Authorize(Roles = "Admin")]
 public class AccountsController : Controller
 {
     private readonly HanoiMetroDbContext _context;
+    private readonly PasswordHasher<Account> _passwordHasher = new();
 
     public AccountsController(HanoiMetroDbContext context)
     {
         _context = context;
     }
 
-    // GET: ACCOUNTS
-    public async Task<IActionResult> Index()    
+    // Index
+    public async Task<IActionResult> Index()
     {
-        return View(await _context.Accounts.ToListAsync());
+        return View(await _context.Accounts
+            .Include(a => a.Station)
+            .ToListAsync());
     }
 
-    // GET: ACCOUNTS/Details/5
-    public async Task<IActionResult> Details(System.Guid? accountid)
+    // Details
+    public async Task<IActionResult> Details(Guid? id)
     {
-        if (accountid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var account = await _context.Accounts
-            .FirstOrDefaultAsync(m => m.AccountId == accountid);
+            .Include(a => a.Station)
+            .FirstOrDefaultAsync(a => a.AccountId == id);
+
         if (account == null)
         {
             return NotFound();
@@ -36,89 +45,133 @@ public class AccountsController : Controller
         return View(account);
     }
 
-    // GET: ACCOUNTS/Create
+    // Create
     public IActionResult Create()
     {
+        ViewBag.Stations = _context.Stations.ToList();
         return View();
     }
 
-    // POST: ACCOUNTS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("AccountId,Username,PasswordHash,Role,StationId,Station")] Account account)
+    public async Task<IActionResult> Create(
+        [Bind("Username,PasswordHash,Role,StationId")]
+        Account account)
     {
+        if (await _context.Accounts.AnyAsync(a => a.Username == account.Username))
+        {
+            ModelState.AddModelError("Username", "Tên đăng nhập đã tồn tại.");
+        }
+
+        if (account.Role != "Admin" && account.Role != "Staff")
+        {
+            ModelState.AddModelError("Role", "Role chỉ được là Admin hoặc Staff.");
+        }
+
+        if (string.IsNullOrWhiteSpace(account.PasswordHash))
+        {
+            ModelState.AddModelError("PasswordHash", "Mật khẩu không được để trống.");
+        }
+
         if (ModelState.IsValid)
         {
-            _context.Add(account);
+            account.AccountId = Guid.NewGuid();
+            account.PasswordHash = _passwordHasher.HashPassword(account, account.PasswordHash);
+
+            _context.Accounts.Add(account);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
+        ViewBag.Stations = _context.Stations.ToList();
         return View(account);
     }
 
-    // GET: ACCOUNTS/Edit/5
-    public async Task<IActionResult> Edit(System.Guid? accountid)
+    // Edit
+    public async Task<IActionResult> Edit(Guid? id)
     {
-        if (accountid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var account = await _context.Accounts.FindAsync(accountid);
+        var account = await _context.Accounts.FindAsync(id);
+
         if (account == null)
         {
             return NotFound();
         }
+
+        ViewBag.Stations = _context.Stations.ToList();
+
         return View(account);
     }
 
-    // POST: ACCOUNTS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(System.Guid? accountid, [Bind("AccountId,Username,PasswordHash,Role,StationId,Station")] Account account)
+    public async Task<IActionResult> Edit(
+        Guid id,
+        [Bind("AccountId,Username,PasswordHash,Role,StationId")]
+        Account account)
     {
-        if (accountid != account.AccountId)
+        if (id != account.AccountId)
         {
             return NotFound();
         }
 
+        var oldAccount = await _context.Accounts.FindAsync(id);
+
+        if (oldAccount == null)
+        {
+            return NotFound();
+        }
+
+        if (await _context.Accounts.AnyAsync(
+            a => a.Username == account.Username &&
+                 a.AccountId != account.AccountId))
+        {
+            ModelState.AddModelError("Username", "Tên đăng nhập đã tồn tại.");
+        }
+
+        if (account.Role != "Admin" && account.Role != "Staff")
+        {
+            ModelState.AddModelError("Role", "Role chỉ được là Admin hoặc Staff.");
+        }
+
         if (ModelState.IsValid)
         {
-            try
+            oldAccount.Username = account.Username;
+            oldAccount.Role = account.Role;
+            oldAccount.StationId = account.StationId;
+
+            if (!string.IsNullOrWhiteSpace(account.PasswordHash))
             {
-                _context.Update(account);
-                await _context.SaveChangesAsync();
+                oldAccount.PasswordHash =
+                    _passwordHasher.HashPassword(oldAccount, account.PasswordHash);
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(account.AccountId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
+        ViewBag.Stations = _context.Stations.ToList();
         return View(account);
     }
 
-    // GET: ACCOUNTS/Delete/5
-    public async Task<IActionResult> Delete(System.Guid? accountid)
+    // Delete
+    public async Task<IActionResult> Delete(Guid? id)
     {
-        if (accountid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var account = await _context.Accounts
-            .FirstOrDefaultAsync(m => m.AccountId == accountid);
+            .Include(a => a.Station)
+            .FirstOrDefaultAsync(a => a.AccountId == id);
+
         if (account == null)
         {
             return NotFound();
@@ -127,23 +180,26 @@ public class AccountsController : Controller
         return View(account);
     }
 
-    // POST: ACCOUNTS/Delete/5
-    [HttpPost, ActionName("Delete")]
+    [HttpPost]
+    [ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(System.Guid? accountid)
+    public async Task<IActionResult> DeleteConfirmed(Guid id)
     {
-        var account = await _context.Accounts.FindAsync(accountid);
-        if (account != null)
+        var account = await _context.Accounts.FindAsync(id);
+
+        if (account == null)
         {
-            _context.Accounts.Remove(account);
+            return NotFound();
         }
 
+        _context.Accounts.Remove(account);
         await _context.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 
-    private bool AccountExists(System.Guid? accountid)
+    private bool AccountExists(Guid id)
     {
-        return _context.Accounts.Any(e => e.AccountId == accountid);
+        return _context.Accounts.Any(a => a.AccountId == id);
     }
 }

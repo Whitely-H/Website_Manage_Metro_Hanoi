@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Models;
+
+namespace Project.Controllers;
 
 public class StationsController : Controller
 {
@@ -11,15 +14,13 @@ public class StationsController : Controller
         _context = context;
     }
 
+    [Authorize]
     public async Task<IActionResult> Index()
     {
-        var station = await _context.Stations
-            .OrderBy(s => s.StationId)
-            .ToListAsync();
-
-        return View(station);
+        return View(await _context.Stations.ToListAsync());
     }
 
+    [Authorize]
     public async Task<IActionResult> Details(string? id)
     {
         if (string.IsNullOrEmpty(id))
@@ -37,7 +38,9 @@ public class StationsController : Controller
 
         return View(station);
     }
-    //CREATE
+
+    // Staff + Admin
+    [Authorize(Roles = "Staff,Admin")]
     public IActionResult Create()
     {
         return View();
@@ -45,17 +48,11 @@ public class StationsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> Create(
-    [Bind("StationId,StationName,Address")] Station station)
+        [Bind("StationId,StationName,Address")]
+        Station station)
     {
-        if (await _context.Stations
-            .AnyAsync(s => s.StationId == station.StationId))
-        {
-            ModelState.AddModelError(
-                "StationId",
-                "Mã ga đã tồn tại.");
-        }
-
         if (ModelState.IsValid)
         {
             _context.Stations.Add(station);
@@ -66,6 +63,9 @@ public class StationsController : Controller
 
         return View(station);
     }
+
+    // Staff + Admin
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> Edit(string? id)
     {
         if (string.IsNullOrEmpty(id))
@@ -73,8 +73,7 @@ public class StationsController : Controller
             return NotFound();
         }
 
-        var station = await _context.Stations
-            .FindAsync(id);
+        var station = await _context.Stations.FindAsync(id);
 
         if (station == null)
         {
@@ -83,42 +82,33 @@ public class StationsController : Controller
 
         return View(station);
     }
-    //Edit
+
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> Edit(
-    string id,
-    [Bind("StationId,StationName,Address")] Station station)
+        string id,
+        [Bind("StationId,StationName,Address")]
+        Station station)
     {
         if (id != station.StationId)
         {
             return NotFound();
         }
 
-        if (!ModelState.IsValid)
-        {
-            return View(station);
-        }
-
-        try
+        if (ModelState.IsValid)
         {
             _context.Stations.Update(station);
             await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!StationExists(station.StationId))
-            {
-                return NotFound();
-            }
 
-            throw;
+            return RedirectToAction(nameof(Index));
         }
 
-        return RedirectToAction(nameof(Index));
+        return View(station);
     }
 
-    //delete
+    // Staff + Admin
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> Delete(string? id)
     {
         if (string.IsNullOrEmpty(id))
@@ -136,45 +126,23 @@ public class StationsController : Controller
 
         return View(station);
     }
-    //Delete confirm
+
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Staff,Admin")]
     public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        if (string.IsNullOrEmpty(id))
-        {
-            return NotFound();
-        }
-
-        var station = await _context.Stations
-            .FindAsync(id);
+        var station = await _context.Stations.FindAsync(id);
 
         if (station == null)
         {
             return NotFound();
         }
 
-        try
-        {
-            _context.Stations.Remove(station);
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateException)
-        {
-            ModelState.AddModelError(
-                "",
-                "Không thể xóa ga vì ga đang được sử dụng trong hệ thống.");
-
-            return View("Delete", station);
-        }
+        _context.Stations.Remove(station);
+        await _context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
-    }
-    //Kiểm tra ID ga Exits or not
-    private bool StationExists(string stationId)
-    {
-        return _context.Stations
-            .Any(s => s.StationId == stationId);
     }
 }

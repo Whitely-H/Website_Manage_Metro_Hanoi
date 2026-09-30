@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Project.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h2>QUẢN LÝ ĐƠN HÀNG</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p><a asp-action="Create" class="btn btn-primary">Thêm đơn hàng</a></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã đơn hàng</th>
+            <th>Hành khách</th>
+            <th>Loại vé</th>
+            <th>Ngày mua</th>
+            <th>Tổng tiền</th>
+            <th>Phương thức thanh toán</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.Passenger?.FullName</td>
+                <td>@item.TicketType?.TypeName</td>
+                <td>@item.PurchaseDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.TotalAmount.ToString("N0") VNĐ</td>
+                <td>@item.PaymentMethod</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info btn-sm">Chi tiết</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.OrderId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.OrderId" class="btn btn-danger btn-sm">Xóa</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

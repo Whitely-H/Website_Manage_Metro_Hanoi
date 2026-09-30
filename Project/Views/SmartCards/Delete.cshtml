@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Project.Models.SmartCard>
+
+@{
+    ViewData["Title"] = "SmartCards";
+}
+
+<h2>QUẢN LÝ SMARTCARD</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <p><a asp-action="Create" class="btn btn-primary">Thêm thẻ</a></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã thẻ</th>
+            <th>Hành khách</th>
+            <th>Mã NFC</th>
+            <th>Số dư</th>
+            <th>Ngày cấp</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CardId</td>
+                <td>@item.Passenger?.FullName</td>
+                <td>@item.NfcCode</td>
+                <td>@item.Balance?.ToString("N0") VNĐ</td>
+                <td>@item.IssueDate?.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.CardId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.CardId" class="btn btn-danger btn-sm">Xóa</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

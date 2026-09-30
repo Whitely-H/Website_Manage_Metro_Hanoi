@@ -1,0 +1,84 @@
+﻿@model Project.Models.Schedule
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduleId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ScheduleId)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainId)
+        </dd>
+
+        <dt class="col-sm-2">
+            Mã tàu
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Train != null)
+            {
+                @Model.Train.TrainCode
+            }
+            else
+            {
+                <span>Không có thông tin</span>
+            }
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DepartureTime.ToString("dd/MM/yyyy HH:mm")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ArrivalTime.ToString("dd/MM/yyyy HH:mm")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Direction)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Direction)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit"
+       asp-route-id="@Model?.ScheduleId"
+       class="btn btn-warning">
+        Sửa
+    </a>
+
+    <a asp-action="Delete"
+       asp-route-id="@Model?.ScheduleId"
+       class="btn btn-danger">
+        Xóa
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Quay lại danh sách
+    </a>
+</div>

@@ -1,4 +1,4 @@
-@model IEnumerable<Project.Models.Train>
+﻿@model IEnumerable<Project.Models.Train>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,9 +6,19 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create new</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Mua vé</a>
+    </p>
+
+}
 <table class="table">
     <thead>
         <tr>
@@ -54,11 +64,15 @@
             <td>
                 @Html.DisplayFor(model => item.Schedules)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TrainId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TrainId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrainId">Delete</a>
-            </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.TrainId" class="btn btn-info btn-sm">Chi tiết</a>
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.TrainId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.TrainId" class="btn btn-danger btn-sm">Xóa</a>
+                    }
+                </td>
         </tr>
 }
     </tbody>

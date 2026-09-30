@@ -143,50 +143,64 @@ public partial class HanoiMetroDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAFFF49B377");
+            entity.HasKey(e => e.OrderId);
 
             entity.Property(e => e.OrderId)
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("OrderID");
-            entity.Property(e => e.PassengerId).HasColumnName("PassengerID");
+
+            entity.Property(e => e.PassengerId)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("PassengerID");
+
             entity.Property(e => e.PaymentMethod).HasMaxLength(50);
+
             entity.Property(e => e.PurchaseDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+
             entity.Property(e => e.TicketTypeId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("TicketTypeID");
-            entity.Property(e => e.TotalAmount).HasColumnType("decimal(18, 2)");
 
-            entity.HasOne(d => d.Passenger).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.PassengerId)
-                .HasConstraintName("FK__Orders__Passenge__59FA5E80");
+            entity.Property(e => e.TotalAmount)
+                .HasColumnType("decimal(18, 2)");
 
-            entity.HasOne(d => d.TicketType).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.TicketTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Orders__TicketTy__5AEE82B9");
+            entity.HasOne(d => d.Passenger)
+                .WithMany(p => p.Orders)
+                .HasForeignKey(d => d.PassengerId);
+
+            entity.HasOne(d => d.TicketType)
+                .WithMany(p => p.Orders)
+                .HasForeignKey(d => d.TicketTypeId);
         });
 
         modelBuilder.Entity<Passenger>(entity =>
         {
-            entity.HasKey(e => e.PassengerId).HasName("PK__Passenge__88915F901A31DC3C");
+            entity.HasKey(e => e.PassengerId);
 
             entity.Property(e => e.PassengerId)
-                .HasDefaultValueSql("(newid())")
+                .HasMaxLength(10)
+                .IsUnicode(false)
                 .HasColumnName("PassengerID");
+
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
             entity.Property(e => e.FullName).HasMaxLength(100);
+
             entity.Property(e => e.IdentityCard)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
             entity.Property(e => e.PassengerType)
                 .HasMaxLength(50)
                 .HasDefaultValue("Bình thường");
+
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -216,29 +230,36 @@ public partial class HanoiMetroDbContext : DbContext
 
         modelBuilder.Entity<SmartCard>(entity =>
         {
-            entity.HasKey(e => e.CardId).HasName("PK__SmartCar__55FECD8EBAC32385");
+            entity.HasKey(e => e.CardId);
 
-            entity.HasIndex(e => e.NfcCode, "UQ__SmartCar__E8FF2D1C4F71F790").IsUnique();
+            entity.HasIndex(e => e.NfcCode).IsUnique();
 
             entity.Property(e => e.CardId)
-                .HasDefaultValueSql("(newid())")
+                .HasMaxLength(10)
+                .IsUnicode(false)
                 .HasColumnName("CardID");
+
+            entity.Property(e => e.PassengerId)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("PassengerID");
+
             entity.Property(e => e.Balance)
                 .HasDefaultValue(0m)
                 .HasColumnType("decimal(18, 2)");
+
             entity.Property(e => e.IssueDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+
             entity.Property(e => e.NfcCode)
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("NFC_Code");
-            entity.Property(e => e.PassengerId).HasColumnName("PassengerID");
 
-            entity.HasOne(d => d.Passenger).WithMany(p => p.SmartCards)
-                .HasForeignKey(d => d.PassengerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__SmartCard__Passe__5629CD9C");
+            entity.HasOne(d => d.Passenger)
+                .WithMany(p => p.SmartCards)
+                .HasForeignKey(d => d.PassengerId);
         });
 
         modelBuilder.Entity<Station>(entity =>

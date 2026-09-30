@@ -17,7 +17,9 @@ a[b-9q8ibpt6yd] {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-
+.nav-item[b-9q8ibpt6yd]{
+    display: flex;
+}
 .nav-pills .nav-link.active[b-9q8ibpt6yd], .nav-pills .show > .nav-link[b-9q8ibpt6yd] {
   color: #fff;
   background-color: #1b6ec2;

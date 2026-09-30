@@ -44,7 +44,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#metroNav"
                         aria-controls="metroNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button>   
 
                 <div class="collapse navbar-collapse" id="metroNav">
                     <ul class="navbar-nav metro-nav mx-auto">
@@ -58,13 +58,14 @@
                             <a class="nav-link" asp-controller="Stations" asp-action="Index">Nhà ga</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Tickets" asp-action="Fare">Giá vé</a>
+                            <a class="nav-link" asp-controller="TicketTypes" asp-action="Index">Giá vé</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Schedule" asp-action="Index">Lịch trình</a>
+                            <a class="nav-link" asp-controller="Schedules" asp-action="Index">Lịch trình</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="News" asp-action="Index">Tin tức</a>
+                            <a class="nav-link" href="https://metrohanoi.vn/news/">Tin tức</a>
+                            
                         </li>
                     </ul>
 
@@ -78,13 +79,48 @@
                         </button>
                     </form>
 
-                    <a class="metro-account" asp-controller="Account" asp-action="Login">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
-                        </svg>
-                        <span>Đăng nhập</span>
-                    </a>
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <span class="metro-account" style="align-content">
+                            @User.Identity.Name
+                        </span>
+                        <a asp-controller="Account"
+                           asp-action="Logout">
+                            Đăng xuất
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Login">
+                            Đăng nhập
+                        </a>
+                    }
+                    @if (User.IsInRole("Staff"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="staffMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quản lý</a>
+                            <ul class="dropdown-menu" aria-labelledby="staffMenu">
+                                <li><a class="dropdown-item" asp-controller="Incidents" asp-action="Create">Thêm sự cố</a></li>
+                                <li><a class="dropdown-item" asp-controller="Passengers" asp-action="Create">Thêm Khách hàng</a></li>
+                                <li><a class="dropdown-item" asp-controller="SmartCards" asp-action="Create">Thêm thẻ thành viên</a></li>
+                                
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quản trị</a>
+                            <ul class="dropdown-menu" aria-labelledby="adminMenu">
+                                <li><a class="dropdown-item" asp-controller="Accounts" asp-action="Index">Quản lý tài khoản</a></li>
+                                <li><a class="dropdown-item" asp-controller="Incidents" asp-action="Index">Quản lý  sự cố</a></li>
+                                <li><a class="dropdown-item" asp-controller="Passengers" asp-action="Index">Quản lý Passengers</a></li>
+                                <li><a class="dropdown-item" asp-controller="SmartCards" asp-action="Index">Quản lý SmartCards</a></li>
+                                <li><a class="dropdown-item" asp-controller="Orders" asp-action="Index">Quản lý Orders</a></li>
+                            </ul>
+                        </li>
+                    }
                 </div>
             </div>
         </nav>
@@ -118,10 +154,18 @@
             <div class="metro-footer__col">
                 <h6>Liên kết nhanh</h6>
                 <ul>
-                    <li><a asp-controller="Routes" asp-action="Index">Tuyến tàu</a></li>
-                    <li><a asp-controller="Stations" asp-action="Index">Nhà ga</a></li>
-                    <li><a asp-controller="Tickets" asp-action="Fare">Giá vé</a></li>
-                    <li><a asp-controller="Home" asp-action="Privacy">Chính sách bảo mật</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Lines" asp-action="Index">Tuyến tàu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Stations" asp-action="Index">Nhà ga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="TicketTypes" asp-action="Index">Giá vé</a>
+                    </li>                   
                 </ul>
             </div>
             <div class="metro-footer__col">
