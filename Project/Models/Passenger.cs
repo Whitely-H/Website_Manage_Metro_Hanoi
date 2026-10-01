@@ -5,7 +5,7 @@ namespace Project.Models;
 
 public partial class Passenger
 {
-    public string PassengerId { get; set; }
+    public string  PassengerId { get; set; }
 
     public string FullName { get; set; } = null!;
 

@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Project.Models.Line>
 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -15,7 +16,7 @@
 else
 {
     <p>
-        <a asp-action="Create" class="btn btn-primary">Mua vé</a>
+        <a asp-controller="TicketTypes" asp-action="Index" class="btn btn-primary">Mua vé</a>
     </p>
 
 }

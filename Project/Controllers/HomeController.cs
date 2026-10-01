@@ -1,34 +1,33 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project.Models;
-using System.Diagnostics;
 
-namespace Project.Controllers
+namespace Project.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly HanoiMetroDbContext _context;
+
+    public HomeController(HanoiMetroDbContext context)
     {
-        
-        private readonly ILogger<HomeController> _logger;
+        _context = context;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index(string? q)
+    {
+        if (!string.IsNullOrWhiteSpace(q))
         {
-            _logger = logger;
-        }
-        [Authorize]
-        public IActionResult Index()
-        {
-            return View();
+            ViewBag.SearchLines = await _context.Lines
+                .Where(x => x.LineID.Contains(q) || x.LineName.Contains(q))
+                .ToListAsync();
+
+            ViewBag.SearchStations = await _context.Stations
+                .Where(x => x.StationId.Contains(q) || x.StationName.Contains(q))
+                .ToListAsync();
+
+            ViewBag.Search = q;
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        return View();
     }
 }
