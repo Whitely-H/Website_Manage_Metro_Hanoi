@@ -101,6 +101,63 @@
     </div>
 </section>
 
+<section class="metro-section metro-operation">
+    <div class="metro-operation__header">
+        <div><h2 class="h4 mb-1">Trạng thái vận hành</h2><div class="metro-operation__updated">Thông tin vận hành hiện tại</div></div>
+        <a asp-controller="Schedules" asp-action="Index" class="metro-btn metro-btn--outline">Xem lịch trình</a>
+    </div>
+
+    <div class="metro-operation__summary">
+        <span class="metro-operation__status-icon"></span>
+        <div class="metro-operation__summary-content">
+            <div class="metro-operation__summary-title">2/2 tuyến đang hoạt động</div>
+            <div class="metro-operation__summary-meta">Không có thông báo gián đoạn được hiển thị.</div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="metro-card metro-operation__line">
+                <div class="metro-card__body">
+                    <div class="metro-operation__line-head">
+                        <div class="metro-operation__line-info">
+                            <span class="metro-line-chip metro-line-chip--2a"></span>
+                            <div><div class="metro-operation__line-name">Tuyến 2A: Cát Linh – Hà Đông</div><div class="metro-operation__line-route">12 ga · Hoạt động bình thường</div></div>
+                        </div>
+                        <span class="metro-status-badge">Đang hoạt động</span>
+                    </div>
+                    <div class="metro-operation__details">
+                        <div class="metro-operation__detail"><span class="metro-operation__detail-label">Chuyến tiếp theo</span><span class="metro-operation__detail-value">10:55</span></div>
+                        <div class="metro-operation__detail"><span class="metro-operation__detail-label">Tần suất</span><span class="metro-operation__detail-value">6–8 phút</span></div>
+                    </div>
+                    <div class="metro-operation__action"><a asp-controller="Schedules" asp-action="Index" class="metro-btn metro-btn--outline">Xem lịch trình</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="metro-card metro-operation__line">
+                <div class="metro-card__body">
+                    <div class="metro-operation__line-head">
+                        <div class="metro-operation__line-info">
+                            <span class="metro-line-chip metro-line-chip--3"></span>
+                            <div><div class="metro-operation__line-name">Tuyến 3: Nhổn – Ga Hà Nội</div><div class="metro-operation__line-route">12 ga · Hoạt động bình thường</div></div>
+                        </div>
+                        <span class="metro-status-badge">Đang hoạt động</span>
+                    </div>
+                    <div class="metro-operation__details">
+                        <div class="metro-operation__detail"><span class="metro-operation__detail-label">Chuyến tiếp theo</span><span class="metro-operation__detail-value">10:58</span></div>
+                        <div class="metro-operation__detail"><span class="metro-operation__detail-label">Tần suất</span><span class="metro-operation__detail-value">7–10 phút</span></div>
+                    </div>
+                    <div class="metro-operation__action"><a asp-controller="Schedules" asp-action="Index" class="metro-btn metro-btn--outline">Xem lịch trình</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
 <section class="metro-section">
     <h2 class="h4 mb-3">Tin tức &amp; thông báo vận hành</h2>
 

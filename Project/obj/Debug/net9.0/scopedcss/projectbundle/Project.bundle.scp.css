@@ -17,9 +17,7 @@ a[b-9q8ibpt6yd] {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-.nav-item[b-9q8ibpt6yd]{
-    display: flex;
-}
+
 .nav-pills .nav-link.active[b-9q8ibpt6yd], .nav-pills .show > .nav-link[b-9q8ibpt6yd] {
   color: #fff;
   background-color: #1b6ec2;
@@ -49,3 +47,42 @@ button.accept-policy[b-9q8ibpt6yd] {
   white-space: nowrap;
   line-height: 60px;
 }
+.metro-user-menu[b-9q8ibpt6yd] {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 16px;
+}
+
+    .metro-user-menu .metro-auth-link[b-9q8ibpt6yd] {
+        color: var(--metro-navy);
+        font-size: 0.9rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+        .metro-user-menu .metro-auth-link:hover[b-9q8ibpt6yd] {
+            color: var(--metro-red);
+        }
+
+    .metro-user-menu .metro-account[b-9q8ibpt6yd] {
+        margin: 0;
+    }
+
+.metro-role-menu[b-9q8ibpt6yd] {
+    list-style: none;
+    margin-left: 4px;
+}
+
+    .metro-role-menu .nav-link[b-9q8ibpt6yd] {
+        color: var(--metro-ink);
+        font-weight: 500;
+        padding: 8px 12px !important;
+        border-radius: 6px;
+    }
+
+        .metro-role-menu .nav-link:hover[b-9q8ibpt6yd],
+        .metro-role-menu.show .nav-link[b-9q8ibpt6yd] {
+            background: rgba(228, 87, 46, 0.08);
+            color: var(--metro-red);
+        }

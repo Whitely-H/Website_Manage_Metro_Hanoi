@@ -16,9 +16,7 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-.nav-item{
-    display: flex;
-}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
@@ -48,3 +46,42 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+.metro-user-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 16px;
+}
+
+    .metro-user-menu .metro-auth-link {
+        color: var(--metro-navy);
+        font-size: 0.9rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+        .metro-user-menu .metro-auth-link:hover {
+            color: var(--metro-red);
+        }
+
+    .metro-user-menu .metro-account {
+        margin: 0;
+    }
+
+.metro-role-menu {
+    list-style: none;
+    margin-left: 4px;
+}
+
+    .metro-role-menu .nav-link {
+        color: var(--metro-ink);
+        font-weight: 500;
+        padding: 8px 12px !important;
+        border-radius: 6px;
+    }
+
+        .metro-role-menu .nav-link:hover,
+        .metro-role-menu.show .nav-link {
+            background: rgba(228, 87, 46, 0.08);
+            color: var(--metro-red);
+        }

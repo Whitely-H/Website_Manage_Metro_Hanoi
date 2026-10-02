@@ -14,11 +14,15 @@
     --metro-font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
+/* ================================
+   BASE
+   ================================ */
+
 body {
+    margin: 0;
     font-family: var(--metro-font-body);
     color: var(--metro-ink);
     background: var(--metro-bg);
-    margin: 0;
 }
 
 h1,
@@ -40,6 +44,10 @@ a {
     a:hover {
         color: var(--metro-red);
     }
+
+/* ================================
+   TOPBAR
+   ================================ */
 
 .metro-topbar {
     background: var(--metro-navy-dark);
@@ -65,10 +73,14 @@ a {
     display: inline-block;
     width: 8px;
     height: 8px;
+    margin-right: 6px;
     border-radius: 50%;
     background: #3FCF8E;
-    margin-right: 6px;
 }
+
+/* ================================
+   NAVBAR
+   ================================ */
 
 .metro-navbar {
     background: var(--metro-white);
@@ -92,19 +104,19 @@ a {
     background: var(--metro-red);
     color: var(--metro-white);
     font-family: var(--metro-font-display);
-    font-weight: 800;
     font-size: 1.1rem;
+    font-weight: 800;
 }
 
 .metro-brand__text {
     font-size: 1.05rem;
-    letter-spacing: 0.02em;
     font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
     .metro-brand__text strong {
-        font-weight: 800;
         color: var(--metro-red);
+        font-weight: 800;
     }
 
 .metro-nav {
@@ -112,10 +124,10 @@ a {
 }
 
     .metro-nav .nav-link {
-        color: var(--metro-ink);
-        font-weight: 500;
         padding: 8px 14px !important;
         border-radius: 6px;
+        color: var(--metro-ink);
+        font-weight: 500;
     }
 
         .metro-nav .nav-link:hover,
@@ -127,32 +139,33 @@ a {
 .metro-search {
     display: flex;
     align-items: center;
-    background: var(--metro-bg);
+    min-width: 260px;
+    margin-right: 16px;
+    padding: 4px 6px 4px 16px;
     border: 1px solid var(--metro-line);
     border-radius: 999px;
-    padding: 4px 6px 4px 16px;
-    margin-right: 16px;
-    min-width: 260px;
+    background: var(--metro-bg);
 }
 
 .metro-search__input {
-    border: none;
-    background: transparent;
-    outline: none;
     flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
     font-size: 0.9rem;
 }
 
 .metro-search__btn {
-    border: none;
-    background: var(--metro-navy);
-    color: var(--metro-white);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--metro-navy);
+    color: var(--metro-white);
     cursor: pointer;
 }
 
@@ -165,10 +178,37 @@ a {
     align-items: center;
     gap: 6px;
     color: var(--metro-navy);
-    font-weight: 600;
     font-size: 0.9rem;
+    font-weight: 600;
     white-space: nowrap;
 }
+
+/* Khoảng cách khu vực tài khoản và menu quyền */
+
+.metro-navbar .navbar-collapse > .metro-account,
+.metro-navbar .navbar-collapse > a {
+    margin-left: 10px;
+}
+
+.metro-navbar .navbar-collapse > .nav-item.dropdown {
+    margin-left: 10px;
+    list-style: none;
+}
+
+    .metro-navbar .navbar-collapse > .nav-item.dropdown .nav-link {
+        color: var(--metro-ink);
+        border-radius: 6px;
+    }
+
+        .metro-navbar .navbar-collapse > .nav-item.dropdown .nav-link:hover,
+        .metro-navbar .navbar-collapse > .nav-item.dropdown .nav-link.show {
+            background: rgba(228, 87, 46, 0.08);
+            color: var(--metro-red);
+        }
+
+/* ================================
+   LINE BAR
+   ================================ */
 
 .metro-linebar {
     background: var(--metro-navy);
@@ -179,9 +219,9 @@ a {
     flex-wrap: wrap;
     align-items: center;
     gap: 24px;
-    list-style: none;
     margin: 0;
     padding: 10px 0;
+    list-style: none;
     color: #DCE4F0;
     font-size: 0.85rem;
 }
@@ -193,17 +233,17 @@ a {
     }
 
     .metro-linebar__list em {
+        margin-left: 4px;
         color: #8FA0BF;
         font-style: normal;
-        margin-left: 4px;
     }
 
 .metro-line-chip {
+    display: inline-block;
     width: 12px;
     height: 12px;
-    border-radius: 3px;
-    display: inline-block;
     flex-shrink: 0;
+    border-radius: 3px;
 }
 
 .metro-line-chip--2a {
@@ -218,24 +258,28 @@ a {
     background: #5B6472;
 }
 
+/* ================================
+   MAIN / HERO
+   ================================ */
+
 .metro-main {
     min-height: 60vh;
 }
 
 .metro-hero {
     position: relative;
+    display: flex;
+    align-items: center;
     min-height: 430px;
     margin: 24px 0 80px;
     padding: 60px;
-    border-radius: var(--metro-radius);
     overflow: hidden;
+    border-radius: var(--metro-radius);
     background-image: linear-gradient( 90deg, rgba(7, 26, 51, 0.90) 0%, rgba(7, 26, 51, 0.72) 45%, rgba(7, 26, 51, 0.35) 100% ), url("/img/banner.jpg");
-    background-size: cover;
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     color: var(--metro-white);
-    display: flex;
-    align-items: center;
 }
 
 .metro-hero__text {
@@ -260,38 +304,38 @@ a {
 
 .metro-quickfare {
     position: absolute;
-    z-index: 3;
     right: 40px;
-    bottom: -35px;
+    bottom: 35px;
+    z-index: 3;
     width: 320px;
     box-shadow: 0 12px 32px rgba(11, 37, 69, 0.25);
 }
+
+/* ================================
+   SECTIONS / CARDS
+   ================================ */
 
 .metro-section {
     margin-bottom: 48px;
 }
 
 .metro-card {
-    background: var(--metro-white);
+    margin-bottom: 0;
+    overflow: hidden;
     border: 1px solid var(--metro-line);
     border-radius: var(--metro-radius);
-    overflow: hidden;
-    margin-bottom: +85px;
+    background: var(--metro-white);
 }
 
 .metro-card__body {
-    padding: 30px ;
-    padding-bottom: 30px;
-    padding-top: 30px;
-        
-    
+    padding: 30px;
 }
 
 .metro-card__title {
-    font-family: var(--metro-font-display);
-    font-weight: 5000;
-    font-size: 1rem;
     margin-bottom: 4px;
+    font-family: var(--metro-font-display);
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .metro-card__meta {
@@ -299,16 +343,20 @@ a {
     font-size: 0.85rem;
 }
 
+/* ================================
+   BUTTONS
+   ================================ */
+
 .metro-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
+    border: none;
     border-radius: 999px;
-    font-weight: 600;
     background: var(--metro-red);
     color: var(--metro-white);
-    border: none;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -318,15 +366,20 @@ a {
     }
 
 .metro-btn--outline {
+    border: 1px solid var(--metro-line);
     background: transparent;
     color: var(--metro-navy);
-    border: 1px solid var(--metro-line);
 }
 
     .metro-btn--outline:hover {
         border-color: var(--metro-navy);
+        background: transparent;
         color: var(--metro-navy);
     }
+
+/* ================================
+   FORM
+   ================================ */
 
 .metro-card .form-label {
     color: var(--metro-ink);
@@ -334,9 +387,9 @@ a {
 }
 
 .metro-card .form-select {
+    min-height: 42px;
     border: 1px solid var(--metro-line);
     border-radius: 8px;
-    min-height: 42px;
 }
 
     .metro-card .form-select:focus {
@@ -344,10 +397,195 @@ a {
         box-shadow: 0 0 0 0.15rem rgba(15, 139, 141, 0.15);
     }
 
+/* ================================
+   TRẠNG THÁI VẬN HÀNH
+   ================================ */
+
+.metro-operation {
+    margin-top: 8px;
+}
+
+.metro-operation__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+    .metro-operation__header h2 {
+        margin: 0;
+    }
+
+.metro-operation__updated {
+    color: var(--metro-ink-soft);
+    font-size: 0.82rem;
+}
+
+.metro-operation__summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 18px 22px;
+    border: 1px solid #CDEDDD;
+    border-radius: var(--metro-radius);
+    background: #F3FBF7;
+}
+
+.metro-operation__status-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #00A859;
+    box-shadow: 0 0 0 5px rgba(0, 168, 89, 0.12);
+}
+
+.metro-operation__summary-content {
+    min-width: 0;
+}
+
+.metro-operation__summary-title {
+    margin-bottom: 3px;
+    color: var(--metro-navy);
+    font-family: var(--metro-font-display);
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+.metro-operation__summary-meta {
+    color: var(--metro-ink-soft);
+    font-size: 0.84rem;
+}
+
+.metro-operation__line {
+    height: 100%;
+    margin-bottom: 0;
+}
+
+    .metro-operation__line .metro-card__body {
+        padding: 22px 24px;
+    }
+
+.metro-operation__line-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.metro-operation__line-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+}
+
+    .metro-operation__line-info .metro-line-chip {
+        margin-top: 5px;
+    }
+
+.metro-operation__line-name {
+    color: var(--metro-navy);
+    font-family: var(--metro-font-display);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.metro-operation__line-route {
+    margin-top: 2px;
+    color: var(--metro-ink-soft);
+    font-size: 0.82rem;
+}
+
+.metro-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #EAF8F0;
+    color: #087A43;
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+    .metro-status-badge::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #00A859;
+    }
+
+.metro-operation__details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--metro-line);
+}
+
+.metro-operation__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.metro-operation__detail-label {
+    color: var(--metro-ink-soft);
+    font-size: 0.76rem;
+}
+
+.metro-operation__detail-value {
+    color: var(--metro-ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.metro-operation__action {
+    margin-top: 16px;
+}
+
+    .metro-operation__action .metro-btn {
+        width: 100%;
+        padding: 9px 16px;
+        font-size: 0.84rem;
+    }
+
+/* Trạng thái cảnh báo / sự cố */
+
+.metro-status-badge--warning {
+    background: #FFF7E8;
+    color: #9A6700;
+}
+
+    .metro-status-badge--warning::before {
+        background: #F2B134;
+    }
+
+.metro-status-badge--danger {
+    background: #FFF0F0;
+    color: #C62828;
+}
+
+    .metro-status-badge--danger::before {
+        background: #E30613;
+    }
+
+/* ================================
+   FOOTER
+   ================================ */
+
 .metro-footer {
+    margin-top: 48px;
     background: var(--metro-navy-dark);
     color: #B9C4D6;
-    margin-top: 48px;
 }
 
 .metro-footer__grid {
@@ -358,16 +596,16 @@ a {
 }
 
 .metro-footer__col h6 {
+    margin-bottom: 12px;
     color: var(--metro-white);
     font-family: var(--metro-font-display);
     font-weight: 700;
-    margin-bottom: 12px;
 }
 
 .metro-footer__col ul {
-    list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .metro-footer__col li {
@@ -387,11 +625,15 @@ a {
 }
 
 .metro-footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.85rem;
     text-align: center;
 }
+
+/* ================================
+   TABLE
+   ================================ */
 
 .table {
     background: var(--metro-white);
@@ -407,11 +649,15 @@ a {
         vertical-align: middle;
     }
 
+/* ================================
+   RESPONSIVE - TABLET
+   ================================ */
+
 @media (max-width: 991px) {
     .metro-search {
-        margin: 12px 0;
-        min-width: 0;
         width: 100%;
+        min-width: 0;
+        margin: 12px 0;
     }
 
     .metro-footer__grid {
@@ -434,14 +680,24 @@ a {
         .metro-hero__text h1 {
             font-size: 2.1rem;
         }
+
+    .metro-navbar .navbar-collapse > .metro-account,
+    .metro-navbar .navbar-collapse > a,
+    .metro-navbar .navbar-collapse > .nav-item.dropdown {
+        margin-left: 0;
+    }
 }
+
+/* ================================
+   RESPONSIVE - MOBILE
+   ================================ */
 
 @media (max-width: 767px) {
     .metro-hero {
+        display: block;
         min-height: auto;
         margin: 20px 0 40px;
         padding: 32px 24px;
-        display: block;
     }
 
     .metro-hero__text {
@@ -472,5 +728,36 @@ a {
 
     .metro-section {
         margin-bottom: 32px;
+    }
+
+    .metro-operation__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+        .metro-operation__header .metro-btn {
+            width: 100%;
+        }
+
+    .metro-operation__summary {
+        padding: 16px 18px;
+    }
+
+    .metro-operation__line-head {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .metro-operation__details {
+        grid-template-columns: 1fr;
+    }
+
+    .metro-status-badge {
+        align-self: flex-start;
+    }
+
+    .metro-card__body {
+        padding: 24px;
     }
 }

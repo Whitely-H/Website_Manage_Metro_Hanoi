@@ -78,7 +78,7 @@
                             </svg>
                         </button>
                     </form>
-
+                    <div class="metro-user-menu">
                     @if (User.Identity?.IsAuthenticated == true)
                     {
                         <span class="metro-account" style="align-content">
@@ -98,7 +98,7 @@
                     }
                     @if (User.IsInRole("Staff"))
                     {
-                        <li class="nav-item dropdown">
+                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="staffMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quản lý</a>
                             <ul class="dropdown-menu" aria-labelledby="staffMenu">
                                 <li><a class="dropdown-item" asp-controller="Incidents" asp-action="Create">Thêm sự cố</a></li>
@@ -121,6 +121,7 @@
                             </ul>
                         </li>
                     }
+                    </div>
                 </div>
             </div>
         </nav>
