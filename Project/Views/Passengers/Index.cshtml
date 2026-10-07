@@ -27,12 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.PassengerType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orders)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SmartCards)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -53,12 +47,6 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.PassengerType)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Orders)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.SmartCards)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PassengerId">Edit</a> |

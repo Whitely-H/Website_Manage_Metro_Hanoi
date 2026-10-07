@@ -34,7 +34,6 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
-        // Khách
         if (model.Role == "Guest")
         {
             var guestClaims = new List<Claim>
@@ -54,14 +53,12 @@ public class AccountController : Controller
             return RedirectToAction("Index", "Home");
         }
 
-        // Chỉ cho phép Staff hoặc Admin
         if (model.Role != "Staff" && model.Role != "Admin")
         {
             ModelState.AddModelError("", "Vai trò không hợp lệ.");
             return View(model);
         }
 
-        // Tìm tài khoản
         var account = await _context.Accounts
             .FirstOrDefaultAsync(a =>
                 a.Username == model.Username &&
@@ -76,7 +73,6 @@ public class AccountController : Controller
             return View(model);
         }
 
-        // Kiểm tra mật khẩu
         var result = _passwordHasher.VerifyHashedPassword(
             account,
             account.PasswordHash,
@@ -91,7 +87,6 @@ public class AccountController : Controller
             return View(model);
         }
 
-        // Tạo quyền đăng nhập
         var accountClaims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, account.Username),
@@ -120,7 +115,6 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-    // Logout
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
@@ -129,7 +123,6 @@ public class AccountController : Controller
 
         return RedirectToAction("Login", "Account");
     }
-    // AccessDenied
     [HttpGet]
     public IActionResult AccessDenied()
     {
