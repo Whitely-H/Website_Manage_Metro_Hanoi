@@ -7,7 +7,7 @@ public partial class Order
 {
     public string OrderId { get; set; } = null!;
 
-    public string PassengerId { get; set; }
+    public string? PassengerId { get; set; }
 
     public string TicketTypeId { get; set; } = null!;
 

@@ -1,0 +1,28 @@
+﻿@model Project.Models.Order
+
+@{
+    ViewData["Title"] = "Thanh toán thành công";
+    string qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + ViewBag.QrData;
+}
+
+<div class="container text-center py-5">
+    <div class="card mx-auto shadow" style="max-width: 450px;">
+        <div class="card-header bg-success text-white">
+            <h4>Thanh Toán Thành Công</h4>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Quét mã QR để qua cổng:</p>
+
+            <img src="@qrUrl" alt="Mã QR" class="img-thumbnail mb-3" />
+
+            <ul class="list-group text-start mb-3">
+                <li class="list-group-item"><strong>Mã đơn:</strong> @Model.OrderId</li>
+                <li class="list-group-item"><strong>Loại vé:</strong> @Model.TicketType?.TypeName</li>
+                <li class="list-group-item"><strong>Số tiền:</strong> @Model.TotalAmount.ToString("N0") VNĐ</li>
+                <li class="list-group-item"><strong>Thanh toán:</strong> @Model.PaymentMethod</li>
+            </ul>
+
+            <a asp-action="Index" class="btn btn-primary w-100">Về danh sách vé</a>
+        </div>
+    </div>
+</div>

@@ -66,11 +66,7 @@ public class TicketTypesController : Controller
     public async Task<IActionResult> Buy(string id, string paymentMethod)
     {
         var ticket = await _context.TicketTypes.FirstOrDefaultAsync(t => t.TicketTypeId == id);
-
-        if (ticket == null)
-        {
-            return NotFound();
-        }
+        if (ticket == null) return NotFound();
 
         if (string.IsNullOrEmpty(paymentMethod))
         {
@@ -78,9 +74,12 @@ public class TicketTypesController : Controller
             return View(ticket);
         }
 
+        // Tạo mã đơn hàng ngẫu nhiên đơn giản
+        string newOrderId = "ORD" + DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(100, 999);
+
         var order = new Order
         {
-            OrderId = "O" + DateTime.Now.ToString("yyyyMMddHHmmss"),
+            OrderId = newOrderId,
             PassengerId = null,
             TicketTypeId = ticket.TicketTypeId,
             PurchaseDate = DateTime.Now,
@@ -91,10 +90,25 @@ public class TicketTypesController : Controller
         _context.Orders.Add(order);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction("PaymentSuccess", new { orderId = order.OrderId });
     }
-// CREATE
-[Authorize(Roles = "Staff,Admin")]
+
+    [AllowAnonymous]
+    public async Task<IActionResult> PaymentSuccess(string orderId)
+    {
+        var order = await _context.Orders
+            .Include(o => o.TicketType)
+            .FirstOrDefaultAsync(o => o.OrderId == orderId);
+
+        if (order == null) return NotFound();
+
+        // Nội dung ngẫu nhiên bên trong mã QR
+        ViewBag.QrData = "METRO-" + order.OrderId + "-" + Guid.NewGuid().ToString().Substring(0, 8);
+
+        return View(order);
+    }
+    // CREATE
+    [Authorize(Roles = "Staff,Admin")]
     public IActionResult Create()
     {
         return View();

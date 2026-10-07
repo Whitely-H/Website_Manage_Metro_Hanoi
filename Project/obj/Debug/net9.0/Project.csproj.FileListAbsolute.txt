@@ -227,6 +227,6 @@ E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\refint\Project.dl
 E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\Project.pdb
 E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\Project.genruntimeconfig.cache
 E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\ref\Project.dll
-E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\compressed\ahiv28nna9-{0}-jbn8apdg52-jbn8apdg52.gz
 E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\compressed\j4e2b207ed-{0}-e1uqjgxeph-e1uqjgxeph.gz
 E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\compressed\pq5v1xxiuv-{0}-e1uqjgxeph-e1uqjgxeph.gz
+E:\Project\Website_Manage_Metro_Hanoi\Project\obj\Debug\net9.0\compressed\ahiv28nna9-{0}-61jpj18osr-61jpj18osr.gz

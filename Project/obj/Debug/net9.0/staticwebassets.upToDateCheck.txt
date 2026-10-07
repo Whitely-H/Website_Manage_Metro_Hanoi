@@ -1,4 +1,3 @@
-wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\img\banner.jpg
 wwwroot\js\site.js
@@ -62,6 +61,7 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\site.css
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\favicon.ico
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\js\site.js
 E:\Project\Website_Manage_Metro_Hanoi\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
